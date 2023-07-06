@@ -1,0 +1,4 @@
+node_modules
+.DS_Store
+User Manual/main.*
+!User Manual/main.tex

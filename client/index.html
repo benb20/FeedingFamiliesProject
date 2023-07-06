@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <base href="/">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.js"integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
+    <script>
+    $.noConflict();
+    jQuery(document).ready(function ($) {
+        $("#datepicker").datepicker(); // Apply the datepicker
+        $("#datepicker").on('change', function(){ // Validate date past today
+            var datePicked= Date.parse($("#datepicker").datepicker("getDate")); // Gets date from the date picker
+            if (datePicked > Date.now()){
+                $('#datepicker').datepicker('setDate', null);
+                alert('Please select another date');
+            }
+        });
+    });
+    </script>
+    <style type='text/css'>
+    body { background-image: url(assets/feedingfamiliesbackground1.png); !important; } /* Adding !important forces the browser to overwrite the default style applied by Bootstrap */
+
+    .hidden {
+        display: none;
+    }
+
+    .center-box{
+        position:absolute;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        z-index:99;
+        margin:auto;
+        max-height:90vh;
+        max-width:1000px;
+        background-color: white;
+        border-radius: 25px;
+        text-align:center;
+        display: inline-flex;
+        flex-flow: column;
+
+    }
+
+    html{
+        min-height:100%;
+        background-size:cover;
+    }
+    .customtable{
+        table-layout: fixed;
+        width: 100%;
+        height:20%;
+    }
+
+    #buttontd {
+        vertical-align: top;
+        text-align: left;
+        float: left;
+    }
+    .image{
+        width: auto;
+        height: auto;
+        max-width:75%;
+        max-height:75%;
+        min-width: 30%;
+        min-height: 30%;
+        padding-top:15%;
+        padding-left:10%;
+    }
+
+    .columnlayout{
+        display:flex;
+    }
+    .jumbotron{
+        width: 100%;
+
+    }
+    .image2{
+        height:10.8%;
+        width:8%;
+        position: absolute;
+        top: 5%;
+        left: 85%;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .columnsocial {
+        float: left;
+        width: 33.33%;
+        padding: 5px;
+    }
+
+    /* Clearfix (clear floats) */
+    .rowsocial::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .steps{
+        height:110%;
+    }
+
+    /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 500px) {
+        .column {
+            width: 100%;
+        }
+    }
+
+    label{margin-left: 20px;}
+    #datepicker{width:180px; margin: 0 20px 20px 20px;}
+    #datepicker > span:hover{cursor: pointer;}
+</style>
+
+<title>Feeding Families - Volunteer Portal</title>
+</head>
+
+<!-- =======Sign in============================================================================ -->
+
+<div class="container" id="loginscreen">
+
+    <!--JUMBOTRON-->
+    <div class="jumbotron jumbotron-fluid">
+        <div style="padding-left: 1.75%">
+            <img src="assets/fflogo.png"></img>
+        </div>
+        <div class="container">
+            <h2 class="display-4">Feeding Families Volunteer Portal</h2>
+            <p class="lead">Our local teams are based across the region in the following areas: Morpeth, Newcastle, Stanley, Washington, Durham, Bishop Auckland and Stockton</p>
+            <a href="https://feedingfamilies.org.uk/">
+                <button id="buttontd" type="button" class="btn btn-dark">Home</button>
+            </a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <!--white CARD-->
+                <div class="card bg-light mb-3" id="steps" style="max-width: 35rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">How to Register</h5><br>
+                        <p class="card-text"> 1  &#x2192; Enter Details<br><br>
+                            2  &#x2192; Complete Training Modules<br><br>
+                            3  &#x2192; Quiz<br><br></font></font></p></p>
+                            <div class="rowsocial">
+                                <div class="columnsocial">
+                                    <div class="media" style="margin-left:5%" style="margin-bottom:50%">
+                                        <input type="image" width="60%" onclick="window.location = 'https://www.facebook.com/groups/188240648412141/';" src="assets/social/facebook.png"/>
+                                    </div>
+                                </div>
+                                <div class="columnsocial">
+                                    <div class="media" style="margin-left:20%" style="bottom:90%">
+                                        <input type="image" width="75%"  onclick="window.location = 'https://twitter.com/feedingfamilie1';" src="assets/social/twitter.png"/>
+                                    </div>
+                                </div>
+                                <div class="columnsocial">
+                                    <div class="media" style="margin-left:35%">
+                                        <input  type="image" width="80%" onclick="window.location = 'https://www.goldengiving.com/secure/donation/feeding-families';" src="assets/social/goldengiving2.png"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div>
+                    <div class="col"><!--white CARD-->
+                        <div class="card bg-light mb-3" id="steps" style="max-width: 35rem;">
+                            <div class="card-body">
+                                <h5 class="card-title"><center>Login</center></h5>
+                                <div class="content-2 h-100">
+                                    <center><img class="image1" width="45%" src="assets/volunteer_trans.png"></center> <!-- -->
+                                    <p align = "center"><font color=#005214><font size = "5">Volunteer Now!</font></font></p>
+                                </div>
+                                <center><button type="button" onclick="login();" class="btn btn-dark">Sign In</button></center><br><p></p>
+
+
+                                <p class="card-text">
+                                </p>
+                            </div>
+                        </div></div></div>
+                        <div class="w-100"></div>
+                        <div class="col"><!--Column3--></div>
+                        <div class="col"><!--Column4--></div>
+                    </div>
+                </div>
+
+
+
+                <!-- ====== Choose Centre ============================================================================ -->
+
+                <div class="container" id="location">
+
+                    <nav class="navbar navbar-light bg-white">
+                        <a class="navbar-brand">Feeding Families</a>
+                        <form class="form-inline">
+
+                            <button type="button" onclick="logout();" class="btn btn-dark">Sign Out</button>
+                        </form>
+                    </nav>
+
+                    <img src="./assets/progress/progress1.png" alt="Progress 1/5" class="img-fluid w-100">
+
+                    <br><br>
+
+                    <div class="row">
+                        <div class="col">
+                            <h1>Sign Up</h1>
+                            <p>Sign up to become a volunteer at one of our packing centres and complete training or become a donor or apply to receive a hamper and complete training.</p>
+                            <div class="row">
+                                <div class="col">
+                                    <div id="choosetype" class="list-group" id="list-tab-volunteers" role="tablist">
+                                        <a class="list-group-item list-group-item-action active" id="core" data-toggle="list" onclick="volunteertype('core');" role="tab">Core Volunteer</a>
+                                        <a class="list-group-item list-group-item-action" id="seasonal" data-toggle="list" onclick="volunteertype('seasonal');" role="tab">Seasonal Volunteer</a>
+                                        <a class="list-group-item list-group-item-action" id="donor" data-toggle="list" onclick="volunteertype('Donor');" role="tab">Donor</a>
+                                        <a class="list-group-item list-group-item-action" id="family" data-toggle="list" onclick="volunteertype('Family');" role="tab">Family</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br>
+                            <h3>Choose a location</h3>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="list-group" id="centres" role="tablist">
+                                        <!--<div id="centres"></div>-->
+                                    </div>
+
+                                    <br>
+                                    <div class="float-left">
+                                        <button class="btn btn-dark" onclick="locationnext();">Next</button>
+                                    </div><br><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ======= Core Form ============================================================================ -->
+
+                <div class="container" id="coreregform">
+
+                    <nav class="navbar navbar-light bg-white" >
+                        <a class="navbar-brand">Feeding Families</a>
+
+                        <form class="form-inline">
+
+                            <button type="button" onclick="logout();" class="btn btn-dark">Sign Out</button>
+                        </form>
+                    </nav>
+
+
+                    <img src="./assets/progress/progress2.png" alt="Progress 2/5" class="img-fluid w-100">
+
+                    <br><br>
+
+
+                    <h1>Volunteer Application Form</h1>
+
+                    <br>
+
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" class="form-control" id="fname">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control" id="lname">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" id="address">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>Town/City</label>
+                                    <input type="text" class="form-control" id="city">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label>Postcode</label>
+                                    <input type="text" class="form-control" id="postcode">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Contact Number</label>
+                                    <input type="text" class="form-control" id="number">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Date of Birth</label>
+                                    <div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy">
+                                        <input class="form-control" type="text" id="DOB">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="text" class="form-control" id="email">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Occupation (or former occupation if retired)</label>
+                                    <input type="email" class="form-control" id="occupation">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Next of Kin Name</label>
+                                    <input type="text" class="form-control" id="nokname">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Next of Kin Contact Number</label>
+                                    <input type="email" class="form-control" id="nokcontact">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Skills and Experience</label>
+                            <textarea class="form-control" id="skills" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Previous Volunteer Work</label>
+                            <textarea class="form-control" id="previouswork" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="drivinglicense">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Do you have a full driving licence?
+                            </label>
+                        </div>
+                        <p></p>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="vehicle">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Are you prepared to use your vehicle as part of your role?
+                            </label>
+                        </div>
+                        <p></p>
+                        <div class="form-group">
+                            <label>Are there particular roles you would enjoy doing? (e.g. core team preparation (admin), packing, driving etc.)</label>
+                            <textarea class="form-control" id="roles" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Why do you want to volunteer with feeding families?</label>
+                            <textarea class="form-control" id="whyvolunteer" rows="3"></textarea>
+                        </div>
+
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="check1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                I wish to apply to be a volunteer with feeding families and agree to follow their policies and processes during my volunteer activities.
+                            </label>
+                        </div>
+                        <p></p>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="check2">
+                            <label class="form-check-label" for="defaultCheck1">
+                                I consent to feeding families keeping my details on file while I remain a volunteer. If I wish to be removed from the volunteer list I may request this at any time.
+                            </label>
+                        </div>
+                        <p></p>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="check3">
+                            <label class="form-check-label" for="defaultCheck1">
+                                I confirm that any documentation I receive is the intellectual property of feeding families and will not share this outside the organisation.
+                            </label>
+                        </div>
+                    </form>
+                    <p></p>
+                    <button type="button" class="btn btn-dark" onclick="backtoselection();" id="back">Back</button>
+                    <div class="float-right">
+
+                        <button type="button" class="btn btn-dark" onclick="submitcore();" id="submit">Submit</button>
+                    </div><br><br>
+                </div>
+                <!-- ======= Donor Form ============================================================================ -->
+
+                <div class="container" id="donorregform">
+
+                    <nav class="navbar navbar-light bg-white" >
+                        <a class="navbar-brand">Feeding Families</a>
+
+                        <form class="form-inline">
+
+                            <button type="button" onclick="logout();" class="btn btn-dark">Sign Out</button>
+                        </form>
+                    </nav>
+
+
+                    <img src="./assets/progress/progress2.png" alt="Progress 2/5" class="img-fluid w-100">
+
+                    <br><br>
+
+
+                    <h1>Donor Application Form</h1>
+
+                    <br>
+
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" class="form-control" id="d-fname">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control" id="d-lname">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" id="d-address">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>Town/City</label>
+                                    <input type="text" class="form-control" id="d-city">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label>Postcode</label>
+                                    <input type="text" class="form-control" id="d-postcode">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Contact Number</label>
+                                    <input type="text" class="form-control" id="d-number">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" id="d-email">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <p></p>
+                    <button type="button" class="btn btn-dark" onclick="backtoselection();" id="back">Back</button>
+                    <div class="float-right">
+
+                        <button type="button" class="btn btn-dark" onclick="submitdonor();" id="submit">Submit</button>
+                    </div><br><br>
+                </div>
+
+                <!-- ======= Family Form ============================================================================ -->
+
+                <div class="container" id="familyregform">
+
+                    <nav class="navbar navbar-light bg-white" >
+                        <a class="navbar-brand">Feeding Families</a>
+
+                        <form class="form-inline">
+
+                            <button type="button" onclick="logout();" class="btn btn-dark">Sign Out</button>
+                        </form>
+                    </nav>
+
+
+                    <img src="./assets/progress/progress2.png" alt="Progress 2/5" class="img-fluid w-100">
+
+                    <br><br>
+
+                    <h1>Family Application Form</h1>
+
+                    <br>
+
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" class="form-control" id="f-fname">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-control" id="f-lname">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-5">
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" id="f-address">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label>Town/City</label>
+                                    <input type="text" class="form-control" id="f-city">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    <label>Postcode</label>
+                                    <input type="text" class="form-control" id="f-postcode">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Contact Number</label>
+                                    <input type="text" class="form-control" id="f-number">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" id="f-email">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <p></p>
+                    <button type="button" class="btn btn-dark" onclick="backtoselection();" id="back">Back</button>
+                    <div class="float-right">
+
+                        <button type="button" class="btn btn-dark" onclick="submitfamily();" id="submit">Submit</button>
+                    </div><br><br>
+                </div>
+
+
+                <!-- ======= Seasonal Form ============================================================================ -->
+
+                <div class="container" id="seasonalregform">
+
+                    <nav class="navbar navbar-light bg-white" >
+                        <a class="navbar-brand">Feeding Families</a>
+
+                        <form class="form-inline">
+                            <button type="button" onclick="logout();" class="btn btn-dark">Sign Out</button>
+                        </form>
+                    </nav>
+
+
+                    <img src="./assets/progress/progress2.png" alt="Progress 2/5" class="img-fluid w-100">
+
+                    <br><br>
+
+
+                    <div id="seasonalregformwarn">
+                        <div class="alert alert-warning" role="alert">There are currently no volunteer oportunities at this centre.</div>
+                    </div>
+                    <h1>Seasonal Volunteer Application Form</h1>
+
+                    <div id="seasonalregform2">
+                        <br>
+                        <p>Please complete a seperate form for each adult over 18.</p>
+                        <form>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="" id="retain_data">
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Your data will be stored and shared with other Feeding Families volunteers for the purpose of organising the Christmas campaign. Please select here if we may NOT retain your information to contact you about other volunteering opportunities.
+                                </label>
+                            </div>
+                            <p></p>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        <input type="text" class="form-control" id="s-fname"> <!-- s- added to id's to indicate seasonal fields -->
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input type="text" class="form-control" id="s-lname">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-5">
+                                    <div class="form-group">
+                                        <label>Address</label>
+                                        <input type="text" class="form-control" id="s-address">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label>Town/City</label>
+                                        <input type="text" class="form-control" id="s-city">
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-group">
+                                        <label>Postcode</label>
+                                        <input type="text" class="form-control" id="s-postcode">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>Contact Number</label>
+                                        <input type="text" class="form-control" id="s-number">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control" id="s-email">
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="DBS">
+                                <label class="form-check-label" for="defaultCheck1">
+                                    Are you DBS checked?
+                                </label>
+                            </div>
+                            <p></p>
+                            <p>I'm interested in:</p>
+                            <p></p>
+                            <div id="interested"></div>
+                            <div class="float-right">
+                                <button type="button" class="btn btn-dark" onclick="submitseasonal();"id="submit">Submit</button>
+                            </div><br><br>
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-dark" onclick="backtoselection();" id="back">Back</button>
+
+                </div>
+
+
+                <!-- ======= Volunteer Training ============================================================================ -->
+
+                <div class="container" id="trainingmodules">
+                    <nav class="navbar navbar-light bg-white" >
+                        <a class="navbar-brand">Feeding Families</a>
+
+                        <form class="form-inline">
+
+                            <button type="button" onclick="logout();" class="btn btn-dark">Sign Out</button>
+                        </form>
+                    </nav>
+                    <img src="./assets/progress/progress3.png" alt="Progress 3/5" class="img-fluid w-100">
+
+                    <br><br>
+
+                    <!--CARD-->
+                    <div class="col d-flex justify-content-center">
+                        <div class="card bg-light mb-3" id = "trainingcard" style="max-width: 65rem;" display:flex>
+                            <div class="card-body">
+                                <div class="row" style="display: flex; align-items: center; justify-content: center;" id='titletext'>
+                                    <h1><font color="black">    VOLUNTEER TRAINING MODULES    </font></h1>
+                                    <br><br><br>
+                                </div>
+                                <div id="coreheader"></div>
+                                <br>
+                                <div id="corevideo"></div>
+                                <br>
+                                <div id="coretext"></div>
+
+                                <button type="button" style="float:right;" onclick="corequiz();"class="btn btn-dark" id="nexttraining">Next</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ======= Core VOlunteer Quiz  ============================================================================ -->
+
+                <script>
+                var coreanswers = [["A","B","C"]], //these are the correct answers for each question in the correct order
+                coretot = coreanswers.length;
+                </script>
+
+
+                <div class="container" id="corequiz">
+                    <nav class="navbar navbar-light bg-white" >
+                        <a class="navbar-brand">Feeding Families</a>
+
+                        <form class="form-inline">
+
+                            <button type="button" onclick="logout();" class="btn btn-dark">Sign Out</button>
+                        </form>
+                    </nav>
+                    <img src="./assets/progress/progress4.png" alt="Progress 4/5" class="img-fluid w-100">
+
+
+
+                    <!--CARD-->
+                    <div class="col d-flex justify-content-center">
+                        <div class="card bg-light mb-3" id = "trainingcard" style="max-width: 65rem;" display:flex>
+                            <div class="card-body">
+                                <div class="row" style="display: flex; align-items: center; justify-content: center;" id='titletext'>
+                                    <h1><font color="black">QUIZ - CORE</font></h1>
+                                    <br><br><br>
+                                </div>
+                                <body>
+
+                                    <p align = center><i> The following quiz will test you on your knowledge of the training modules. This will take approximately 10 minutes to complete.</i></p>
+
+                                    <ul class="quiz">
+                                        <li>
+                                            <h4>Question?</h4>
+                                            <ul class="choices">
+                                                <!--these are the multiple answers that are displayed for question 1-->
+                                                <li><label><input type="radio" name="corequestion0" value="A"><span>Answer A</span></label></li>
+                                                <li><label><input type="radio" name="corequestion0" value="B"><span>Answer B</span></label></li>
+                                                <li><label><input type="radio" name="corequestion0" value="C"><span>Answer C</span></label></li>
+                                                <li><label><input type="radio" name="corequestion0" value="D"><span>Answer D</span></label></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+
+                                    <span id="myresults" class="my-results">My results will appear here</span>
+                                    <br><br>
+                                    <div class="row justify-content-between">
+                                        <div class="col-4">
+                                            <button type="button" class="btn btn-dark" onclick="backtocoretraining();" id="backtraining">Back</button>
+                                        </div>
+                                        <div class="col-4">
+                                            <button type="button" style="float:right;" onclick="corereturnScore()" class="btn btn-dark" id="nexttraining">Next</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- ======= Seasonal Volunteer Training ============================================================================ -->
+
+                    <div class="container" id="seasonaltrainingmodules">
+                        <nav class="navbar navbar-light bg-white" >
+                            <a class="navbar-brand">Feeding Families</a>
+
+                            <form class="form-inline">
+
+                                <button type="button" onclick="logout();" class="btn btn-dark">Sign Out</button>
+                            </form>
+                        </nav>
+                        <img src="./assets/progress/progress3.png" alt="Progress 3/5" class="img-fluid w-100">
+
+                        <br><br>
+
+                        <!--CARD-->
+                        <div class="col d-flex justify-content-center">
+                            <div class="card bg-light mb-3" id = "trainingcard" style="max-width: 65rem;" display:flex>
+                                <div class="card-body">
+                                    <div class="row" style="display: flex; align-items: center; justify-content: center;" id='titletext'>
+                                        <h1><font color="black">    SEASONAL TRAINING MODULES    </font></h1>
+                                        <br><br><br>
+                                    </div>
+                                    <div id="seasonalheader"></div>
+                                    <br>
+                                    <div id="seasonalvideo"></div>
+                                    <br>
+                                    <div id="seasonaltext"></div>
+
+                                    <button type="button" style="float:right;" onclick="seasonalquiz();"class="btn btn-dark" id="nexttraining">Next</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ======= Seasonal Quiz  ============================================================================ -->
+
+                    <script>
+                    var seasonalanswers = [["A","B","C"]], //these are the correct answers for each question in the correct order
+                    seasonaltot = seasonalanswers.length;
+                    </script>
+
+
+                    <div class="container" id="seasonalquiz">
+                        <nav class="navbar navbar-light bg-white" >
+                            <a class="navbar-brand">Feeding Families</a>
+
+                            <form class="form-inline">
+
+                                <button type="button" onclick="logout();" class="btn btn-dark">Sign Out</button>
+                            </form>
+                        </nav>
+                        <img src="./assets/progress/progress4.png" alt="Progress 4/5" class="img-fluid w-100">
+
+
+
+                        <!--CARD-->
+                        <div class="col d-flex justify-content-center">
+                            <div class="card bg-light mb-3" id = "trainingcard" style="max-width: 65rem;" display:flex>
+                                <div class="card-body">
+                                    <div class="row" style="display: flex; align-items: center; justify-content: center;" id='titletext'>
+                                        <h1><font color="black">QUIZ - SEASONAL</font></h1>
+                                        <br><br><br>
+                                    </div>
+                                    <body>
+
+                                        <p align = center><i> The following quiz will test you on your knowledge of the training modules. This will take approximately 10 minutes to complete.</i></p>
+
+                                        <ul class="quiz">
+                                            <li>
+                                                <h4>Question?</h4>
+                                                <ul class="choices">
+                                                    <!--these are the multiple answers that are displayed for question 1-->
+                                                    <li><label><input type="radio" name="seasonalquestion0" value="A"><span>Answer A</span></label></li>
+                                                    <li><label><input type="radio" name="seasonalquestion0" value="B"><span>Answer B</span></label></li>
+                                                    <li><label><input type="radio" name="seasonalquestion0" value="C"><span>Answer C</span></label></li>
+                                                    <li><label><input type="radio" name="seasonalquestion0" value="D"><span>Answer D</span></label></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+
+                                        <span id="s-myresults" class="my-results">My results will appear here</span>
+                                        <br><br>
+                                        <div class="row justify-content-between">
+                                            <div class="col-4">
+                                                <button type="button" class="btn btn-dark" onclick="backtoseasonaltraining();" id="backtraining">Back</button>
+                                            </div>
+                                            <div class="col-4">
+                                                <button type="button" style="float:right;" onclick="seasonalreturnScore();" class="btn btn-dark" id="nexttraining">Next</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- ======= Donor Training ============================================================================ -->
+
+
+                        <div class="container" id="donortrainingmodules">
+                            <nav class="navbar navbar-light bg-white" >
+                                <a class="navbar-brand">Feeding Families</a>
+
+                                <form class="form-inline">
+
+                                    <button type="button" onclick="logout();" class="btn btn-dark">Sign Out</button>
+                                </form>
+                            </nav>
+                            <img src="./assets/progress/progress3.png" alt="Progress 3/5" class="img-fluid w-100">
+
+                            <br><br>
+
+                            <!--CARD-->
+                            <div class="col d-flex justify-content-center">
+                                <div class="card bg-light mb-3" id = "trainingcard" style="max-width: 65rem;" display:flex>
+                                    <div class="card-body">
+                                        <div class="row" style="display: flex; align-items: center; justify-content: center;" id='titletext'>
+                                            <h1><font color="black">       DONOR TRAINING MODULES       </font></h1>
+                                            <br><br><br>
+                                        </div>
+                                        <div id="donorheader"></div>
+                                        <br>
+                                        <div id="donorvideo"></div>
+                                        <br>
+                                        <div id="donortext"></div>
+
+                                        <button type="button" style="float:right;" onclick="donorquiz();"class="btn btn-dark" id="nexttraining">Next</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- ======= Donor Quiz  ============================================================================ -->
+
+                        <script>
+                        var donoranswers = [["A","C","D"], ["B","C","D"], ["A","B","C","D","E"],["E"],["B"]], //these are the correct answers for each question in the correct order
+                        donortot = donoranswers.length;
+                        </script>
+
+
+                        <div class="container" id="donorquiz">
+                            <nav class="navbar navbar-light bg-white" >
+                                <a class="navbar-brand">Feeding Families</a>
+
+                                <form class="form-inline">
+
+                                    <button type="button" onclick="logout();" class="btn btn-dark">Sign Out</button>
+                                </form>
+                            </nav>
+                            <img src="./assets/progress/progress4.png" alt="Progress 4/5" class="img-fluid w-100">
+
+
+
+                            <!--CARD-->
+                            <div class="col d-flex justify-content-center">
+                                <div class="card bg-light mb-3" id = "trainingcard" style="max-width: 65rem;" display:flex>
+                                    <div class="card-body">
+                                        <div class="row" style="display: flex; align-items: center; justify-content: center;" id='titletext'>
+                                            <h1><font color="black">QUIZ - DONORS</font></h1>
+                                            <br><br><br>
+                                        </div>
+                                        <body>
+
+                                            <p align = center><i> The following quiz will test you on your knowledge of the training modules. This will take approximately 10 minutes to complete.</i></p>
+
+                                            <ul class="quiz">
+                                                <li>
+                                                    <h4>What are the methods you can use to donate?</h4>
+                                                    <ul class="choices">
+                                                        <!--these are the multiple answers that are displayed for question 1-->
+                                                        <li><label><input type="radio" name="donorquestion0" value="A"><span>Matched Hampers</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion0" value="B"><span>Clothes and toys</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion0" value="C"><span>Gift of money</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion0" value="D"><span>Drop off at a colletion point</span></label></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <h4>What should you consider before offering a matched hamper?</h4>
+                                                    <ul class="choices">
+                                                        <!--these are the multiple answers that are displayed for question 2-->
+                                                        <li><label><input type="radio" name="donorquestion1" value="A"><span>Will you be at home on Christmas Day?</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion1" value="B"><span>Can you afford to give it - have you got money set aside</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion1" value="C"><span>Can you deliver it?</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion1" value="D"><span>Will you definitely commit to giving it?</span></label></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <h4>What must you do when signing up?</h4>
+                                                    <ul class="choices">
+                                                        <!--these are the multiple answers that are displayed for question 3-->
+                                                        <li><label><input type="radio" name="donorquestion2" value="A"><span>Enter your details correctly on the website</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion2" value="B"><span>Verify your phone number or email</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion2" value="C"><span>Select the family you want to be matched to</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion2" value="D"><span>Check you really do want to be matched to the family before confirming</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion2" value="E"><span>Contact your family so you know you can get in touch with them</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion2" value="F"><span>Ask question about the age and sex about their children</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion2" value="G"><span>Look on Facebook to see if you can find them and try to find out more information there</span></label></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <h4>What can be included in our hampers?</h4>
+                                                    <ul class="choices">
+                                                        <!--these are the multiple answers that are displayed for question 4-->
+                                                        <li><label><input type="radio" name="donorquestion3" value="A"><span>Bottles of wine and beer (or non-alcholic versions)</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion3" value="B"><span>Money and vouchers</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion3" value="C"><span>Gifts</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion3" value="D"><span>Extra Food Items</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion3" value="E"><span>All the items on the shopping list</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion3" value="F"><span>Cigarettes or tobacco</span></label></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <h4>When should matched hampers be delivered?</h4>
+                                                    <ul class="choices">
+                                                        <!--these are the multiple answers that are displayed for question 5-->
+                                                        <li><label><input type="radio" name="donorquestion4" value="A"><span>Any time in December</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion4" value="B"><span>18-23 December</span></label></li>
+                                                        <li><label><input type="radio" name="donorquestion4" value="C"><span>Christmas Eve</span></label></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+
+                                            <span id="d-myresults" class="my-results">My results will appear here</span>
+                                            <br><br>
+                                            <div class="row justify-content-between">
+                                                <div class="col-4">
+                                                    <button type="button" class="btn btn-dark" onclick="backtodonortraining();" id="backtraining">Back</button>
+                                                </div>
+                                                <div class="col-4">
+                                                    <button type="button" style="float:right;" onclick="donorreturnScore();" class="btn btn-dark" id="nexttraining">Next</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <!-- ======= Family Training ============================================================================ -->
+
+
+                            <div class="container" id="familytrainingmodules">
+                                <nav class="navbar navbar-light bg-white" >
+                                    <a class="navbar-brand">Feeding Families</a>
+
+                                    <form class="form-inline">
+
+                                        <button type="button" onclick="logout();" class="btn btn-dark">Sign Out</button>
+                                    </form>
+                                </nav>
+                                <img src="./assets/progress/progress3.png" alt="Progress 3/5" class="img-fluid w-100">
+
+                                <br><br>
+
+                                <!--CARD-->
+                                <div class="col d-flex justify-content-center">
+                                    <div class="card bg-light mb-3" id = "trainingcard" style="max-width: 65rem;" display:flex>
+                                        <div class="card-body">
+                                            <div class="row" style="display: flex; align-items: center; justify-content: center;" id='titletext'>
+                                                <h1><font color="black">     FAMILY TRAINING MODULES     </font></h1>
+                                                <br><br><br>
+                                            </div>
+                                            <div id="familyheader"></div>
+                                            <br>
+                                            <div id="familyvideo"></div>
+                                            <br>
+                                            <div id="familytext"></div>
+
+                                            <button type="button" style="float:right;" onclick="familyquiz();"class="btn btn-dark" id="nexttraining">Next</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ======= Family Quiz  ============================================================================ -->
+
+                            <script>
+                            var familyanswers = [["A","B","C"]], //these are the correct answers for each question in the correct order
+                            familytot = familyanswers.length;
+                            </script>
+
+
+                            <div class="container" id="familyquiz">
+                                <nav class="navbar navbar-light bg-white" >
+                                    <a class="navbar-brand">Feeding Families</a>
+
+                                    <form class="form-inline">
+
+                                        <button type="button" onclick="logout();" class="btn btn-dark">Sign Out</button>
+                                    </form>
+                                </nav>
+                                <img src="./assets/progress/progress4.png" alt="Progress 4/5" class="img-fluid w-100">
+
+
+
+                                <!--CARD-->
+                                <div class="col d-flex justify-content-center">
+                                    <div class="card bg-light mb-3" id = "trainingcard" style="max-width: 65rem;" display:flex>
+                                        <div class="card-body">
+                                            <div class="row" style="display: flex; align-items: center; justify-content: center;" id='titletext'>
+                                                <h1><font color="black">QUIZ - FAMILY</font></h1>
+                                                <br><br><br>
+                                            </div>
+                                            <body>
+
+                                                <p align = center><i> The following quiz will test you on your knowledge of the training modules. This will take approximately 10 minutes to complete.</i></p>
+
+                                                <ul class="quiz">
+                                                    <li>
+                                                        <h4>Question?</h4>
+                                                        <ul class="choices">
+                                                            <!--these are the multiple answers that are displayed for question 1-->
+                                                            <li><label><input type="radio" name="familyquestion0" value="A"><span>Answer A</span></label></li>
+                                                            <li><label><input type="radio" name="familyquestion0" value="B"><span>Answer B</span></label></li>
+                                                            <li><label><input type="radio" name="familyquestion0" value="C"><span>Answer C</span></label></li>
+                                                            <li><label><input type="radio" name="familyquestion0" value="D"><span>Answer D</span></label></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+
+                                                <span id="f-myresults" class="my-results">My results will appear here</span>
+                                                <br><br>
+                                                <div class="row justify-content-between">
+                                                    <div class="col-4">
+                                                        <button type="button" class="btn btn-dark" onclick="backtofamilytraining();" id="backtraining">Back</button>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <button type="button" style="float:right;" onclick="familyreturnScore();" class="btn btn-dark" id="nexttraining">Next</button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- ======= Final Page ============================================================================ -->
+
+                                <div class="container" id="submitted">
+                                    <nav class="navbar navbar-light bg-white" >
+                                        <a class="navbar-brand">Feeding Families</a>
+
+                                        <form class="form-inline">
+
+                                            <button type="button" onclick="logout();" class="btn btn-dark">Sign Out</button>
+                                        </form>
+                                    </nav>
+                                    <img src="./assets/progress/progress5.png" alt="Progress 5/5" class="img-fluid w-100">
+                                    <br><br><br><br>
+                                    <div class="row justify-content-center">
+                                        <h3>Thank you for registering your interest.</h3>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <p>We will get in touch when we have an opportunity that might be of interest to you.</p>
+                                    </div>
+                                    <br>
+                                    <div class="row justify-content-center">
+                                        <button type="button" onclick="usereditdetails();" style="margin:5px;" class="btn btn-dark">Edit Your Details</button>
+                                        <button type="button" onclick="viewseasonaldates();" style="margin:5px;" class="btn btn-dark">View Seasonal Dates</button>
+                                    </div>
+                                    <div id="editUserDetails"></div>
+
+
+                                </div>
+
+
+                                <!-- ======= Admin ============================================================================ -->
+
+
+                                <div class="container" id="adminwarning">
+                                    <nav class="navbar navbar-light bg-white" >
+                                        <a class="navbar-brand">Feeding Families Admin Page</a>
+
+                                        <form class="form-inline">
+
+                                            <button type="button" onclick="logout();" class="btn btn-dark">Sign Out</button>
+                                        </form>
+                                    </nav>
+                                    <br><br>
+                                    <div class="row align-items-center justify-content-center">
+                                        <h4>Press continue to access the admin page.</h4>
+                                        <br><br>
+                                    </div>
+                                    <div class="row align-items-center justify-content-center">
+                                        <button type="button" onclick="loadadmin()" class="btn btn-dark">Continue</button>
+                                    </div>
+                                </div>
+                                <div class="container" id="admin">
+
+                                    <nav class="navbar navbar-light bg-white" >
+                                        <a class="navbar-brand">Feeding Families Admin Page</a>
+
+                                        <form class="form-inline">
+
+                                            <button type="button" onclick="logout();" class="btn btn-dark">Sign Out</button>
+                                        </form>
+                                    </nav>
+                                    <hr>
+
+                                    <div class="container" id="seasonal">
+                                        <h4>Edit Seasonal Dates</h4>
+                                        <div class="float-right">
+                                            <div id="add_error"></div>
+                                        </div>
+                                        <p>Remove existing dates:</p>
+                                        <div id="existing_dates"><p>No existing dates found for your locations</p></div>
+
+                                        <script>
+                                        jQuery(document).ready(function ($) {
+                                            $("#datepicker2").datepicker(); // Apply the datepicker
+                                            $("#datepicker2").on('change', function(){ // Validate date past today
+                                                var datePicked = Date.parse($("#datepicker2").datepicker("getDate")); // Gets date from the date picker
+                                                if (datePicked < Date.now()){
+                                                    $('#datepicker2').datepicker('setDate', null);
+                                                    alert('Please select another date');
+                                                }
+                                            });
+                                        });
+                                        </script>
+                                        <p>Add new dates:</p>
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <div class="form-group">
+                                                        <label>Date</label>
+                                                        <div id="datepicker2" class="input-group date" data-date-format="dd-mm-yyyy">
+                                                            <input class="form-control" type="text" id="Date">
+                                                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-5">
+                                                    <div class="form-group">
+                                                        <label>Description (eg. Planning, Packing, Deliveries)</label>
+                                                        <input type="text" class="form-control" id="Description">
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div class="form-group" id="SelectLocations">
+                                                        <label>Location</label>
+
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-2">
+                                                    <div class="form-group">
+                                                        <label>Capacity</label>
+                                                        <input type="text" class="form-control" id="Capacity">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <br><br>
+                                        <div class="float-right">
+                                            <button type="button" class="btn btn-dark" id="add">Add</button>
+                                        </div>
+
+                                        <br><br>
+                                        <div>
+                                            <h4>Search for Users</h4>
+                                            <div class="form-group"  id ="editUsers">
+
+                                                <p><b>User</b></p>
+                                                <input type='text' class="form-control" id="UserSearchInput"></input>
+                                                <p></p>
+                                                <button type="button" class="btn btn-dark" onclick="editUserSearch()" id="UserSearchBtn">Search</button>
+                                                <p></p>
+                                            </div>
+                                            <div id="editUsersSearch"></div>
+
+                                        </div>
+                                        <br><br>
+
+                                        <!-- Only admin not manager -->
+                                        <div id="super">
+                                            <div class="row">
+                                                <div class="col"  style="padding-right:20px; border-right: 1px solid #ccc;">
+                                                    <h4>Add Managers</h4>
+                                                    <div id=addManagers></div>
+                                                    <div id=addManagersSearch></div>
+                                                </div>
+                                                <div class="col">
+                                                    <h4>Remove Managers</h4>
+                                                    <div id=editManagers></div>
+                                                </div>
+                                            </div>
+
+                                            <br><br>
+
+                                            <div class="row">
+
+                                                <div id=editCentres class="col" style="padding-right:20px; border-right: 1px solid #ccc;">
+                                                    <h4>Update and Remove Centres</h4>
+                                                    <div class="form-group"  id ="updatecentres"></div>
+                                                    <div id="viewcentredetails"></div>
+
+
+                                                </div>
+                                                <div class="col">
+                                                    <h4>Add New Centre</h4>
+                                                    <label>Name</label>
+                                                    <input type="text" class="form-control" id="addcentreName">
+                                                    <p></p>
+                                                    <label>Address</label>
+                                                    <input type="text" class="form-control" id="addcentreAddress">
+                                                    <p></p>
+                                                    <label>City</label>
+                                                    <input type="text" class="form-control" id="addcentreCity">
+                                                    <p></p>
+                                                    <label>Postcode</label>
+                                                    <input type="text" class="form-control" id="addcentrePostcode">
+                                                    <p></p>
+                                                    <label>Phone Number</label>
+                                                    <input type="text" class="form-control" id="addcentrePhone">
+                                                    <p></p>
+                                                    <label>Email</label>
+                                                    <input type="text" class="form-control" id="addcentreEmail">
+                                                    <p></p>
+                                                    <button id="addCentre" type="button" style="margin:5px;" class="btn btn-dark">Add</button>
+                                                    <div id=addCentreError></div>
+                                                </div>
+                                            </div>
+                                            <br><br>
+                                            <h4>Edit Training Modules</h4>
+                                            <div class="row">
+                                                <div class="col" style="padding-right:20px; border-right: 1px solid #ccc;">
+                                                    <div id=editModules>
+                                                        <div id=hasAccess></div>
+                                                        <div id="main">
+                                                            <p><b>List of training modules</b></p>
+                                                            <div id="listModules"></div>
+                                                            <button class="btn btn-dark" id="moduleAdd">Add</button>
+                                                            <p></p>
+                                                        </div>
+                                                    </div>
+                                                    <div id="moduleCreater"></div>
+                                                </div>
+                                                <div class="col">
+                                                    <p><b>Course Lists</b></p>
+                                                    <div id="listCourses"></div>
+                                                    <p><p>
+                                                        <select id="courseAddInput" class = "form-control"><option>Core</option><option>Seasonal</option><option>Donor</option><option>Family</option></select>
+                                                        <p><p>
+                                                            <button class="btn btn-dark" id="coursesAdd">Add</button>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <br><br>
+                                                <h4>Export User Data</h4>
+                                                <div id=export>
+                                                    <p><b>Manager List </b> - List of managers and the centres they manage.</p>
+                                                    <p></p>
+                                                    <p><b>User List </b> - List of all users you have access to.</p>
+                                                    <p></p>
+                                                    <p><b>Dates </b> - List of all the dates centres require people.</p>
+                                                    <p></p>
+                                                    <button id="exportmanagers" onclick="exportmanagers()" type="button" style="margin:5px;" class="btn btn-dark">Export Manager List</button>
+                                                    <button id="exportusers" onclick="exportusers()" type="button" style="margin:5px;" class="btn btn-dark">Export User List</button>
+                                                    <button id="exportdates" onclick="exportdates()" type="button" style="margin:5px;" class="btn btn-dark">Export Dates</button>
+                                                    <br><br>
+                                                </div>
+
+                                            </div>
+
+
+                                            <!-- Javascript required for bootstrap -->
+                                            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+                                            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+                                            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+                                            <script src="https://cdn.auth0.com/js/auth0-spa-js/1.2/auth0-spa-js.production.js"></script>
+                                            <!-- Page js -->
+                                            <script src="./js/auth.js"></script>
+                                            <script src="./js/admin.js"></script>
+                                            <script src="./js/index.js"></script>
+                                        </body>
+                                        </html>
+                                        </html>

@@ -1,0 +1,9 @@
+{	
+	"database": {
+		"name"     : "feedingfamilies",
+		"host"     : "localhost",
+		"user"     : "root",
+		"password" : ""
+	},
+	"port": 8000
+}
